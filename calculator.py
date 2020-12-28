@@ -40,7 +40,7 @@ layout = [
 
 class App():
     def __init__(self):
-        self.window = sg.Window('Calculator PyGUI', layout=layout, margins=(0,0),
+        self.window = sg.Window('Calculator PyGUI', layout=layout, icon = 'calculator.ico' , margins=(0,0),
         resizable=True, return_keyboard_events=False)
         self.result = 0
         self.oper = ''
