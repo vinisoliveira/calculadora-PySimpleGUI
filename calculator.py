@@ -10,11 +10,10 @@ WIN_H = 50
 
 #MENU LAYOUT
 menu_layout = [
-    ['File', ['Save', 'Exit']],
-    [ 'Tools', ['Waiting']],
+    ['File', ['Copy', 'Exit']],
     ['Help', ['About']]]
 
-#ELEMENTOS DENTRO DA NOSSA TELA - ROW 1
+#ELEMENTOS DENTRO DA TELA
 layout = [
     [sg.Menu(menu_layout)],
     [sg.Input('0', size=(int(WIN_W/2), 1), font=('Consolas', 20), key='-BOX-'),
@@ -65,7 +64,7 @@ class App():
         if self.oper == '/':
             return float(self.result) / float(self.values['-BOX-'])
     
-    #FUNÇÃO QUE MANTÉM O PROGRAMA RODANDO
+    #FUNÇÃO QUE MANTÉM O PROGRAMA RODANDO EM LOOPING
     def start(self):
         while True:
             event, self.values = self.window.read()
