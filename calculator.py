@@ -52,7 +52,7 @@ class App():
 
     #FUNÇÕES DO MENU_LAYOUT
     def about(self):
-        sg.popup('About', 'Just a Exemple', 'contact me')
+        sg.popup('Calculator made using Python with PySimpleGui(https://pysimplegui.readthedocs.io/en/latest/)')
 
     #FUNÇÃO QUE MOSTRA O RESULTADO NO VISOR
     def resulter(self):
