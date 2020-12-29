@@ -72,10 +72,9 @@ class App():
             if event in (None, 'Exit', sg.WIN_CLOSED):
                 break
 
-            #CLICANDO EM ABOUT MENU, ATIVA ESSA FUNÇÃO
             if event in ('About'):
                 self.about()
-
+            #ATUALIZAR VISOR DE ACORDO COM O NÚMERO DIGITADO
             if event in ('-ONE-'):
                 if self.values['-BOX-'] == '0':
                     self.window['-BOX-'].update(value='1')
