@@ -10,8 +10,8 @@ WIN_H = 50
 
 #MENU LAYOUT
 menu_layout = [
-    ['File', ['Copy', 'Exit']],
-    ['Help', ['About']]]
+    ['Arquivo', ['Copiar', 'Sair']],
+    ['Ajuda', ['Sobre']]]
 
 #ELEMENTOS DENTRO DA TELA
 layout = [
@@ -67,120 +67,123 @@ class App():
     #FUNÇÃO QUE MANTÉM O PROGRAMA RODANDO EM LOOPING
     def start(self):
         while True:
-            event, self.values = self.window.read()
+            try:
+                event, self.values = self.window.read()
 
-            if event in (None, 'Exit', sg.WIN_CLOSED):
-                break
+                if event in (None, 'Exit', sg.WIN_CLOSED):
+                    break
 
-            if event in ('About'):
-                self.about()
-            #ATUALIZAR VISOR DE ACORDO COM O NÚMERO DIGITADO
-            if event in ('-ONE-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='1')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-'] + '1')
+                if event in ('About'):
+                    self.about()
+                #ATUALIZAR VISOR DE ACORDO COM O NÚMERO DIGITADO
+                if event in ('-ONE-'):
+                    if self.values['-BOX-'] == '0':
+                        self.window['-BOX-'].update(value='1')
+                    else:
+                        self.window['-BOX-'].update(value=self.values['-BOX-'] + '1')
 
-            if event in ('-TWO-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='2')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-'] + '2')
+                if event in ('-TWO-'):
+                    if self.values['-BOX-'] == '0':
+                        self.window['-BOX-'].update(value='2')
+                    else:
+                        self.window['-BOX-'].update(value=self.values['-BOX-'] + '2')
 
-            if event in ('-THREE-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='3')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-'] + '3')
+                if event in ('-THREE-'):
+                    if self.values['-BOX-'] == '0':
+                        self.window['-BOX-'].update(value='3')
+                    else:
+                        self.window['-BOX-'].update(value=self.values['-BOX-'] + '3')
+                    
+                if event in ('-FOUR-'):
+                    if self.values['-BOX-'] == '0':
+                        self.window['-BOX-'].update(value='4')
+                    else:
+                        self.window['-BOX-'].update(value=self.values['-BOX-'] + '4')
+
+                if event in ('-FIVE-'):
+                    if self.values['-BOX-'] == '0':
+                        self.window['-BOX-'].update(value='5')
+                    else:
+                        self.window['-BOX-'].update(value=self.values['-BOX-'] + '5')
+
+                if event in ('-SIX-'):
+                    if self.values['-BOX-'] == '0':
+                        self.window['-BOX-'].update(value='6')
+                    else:
+                        self.window['-BOX-'].update(value=self.values['-BOX-'] + '6')
+
+                if event in ('-SEVEN-'):
+                    if self.values['-BOX-'] == '0':
+                        self.window['-BOX-'].update(value='7')
+                    else:
+                        self.window['-BOX-'].update(value=self.values['-BOX-'] + '7')
+
+                if event in ('-EIGHT-'):
+                    if self.values['-BOX-'] == '0':
+                        self.window['-BOX-'].update(value='8')
+                    else:
+                        self.window['-BOX-'].update(value=self.values['-BOX-'] + '8')
+
+                if event in ('-NINE-'):
+                    if self.values['-BOX-'] == '0':
+                        self.window['-BOX-'].update(value='9')
+                    else:
+                        self.window['-BOX-'].update(value=self.values['-BOX-'] + '9')
                 
-            if event in ('-FOUR-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='4')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-'] + '4')
+                if event in ('-ZERO-'):
+                    if self.values['-BOX-'] == '0':
+                        self.window['-BOX-'].update(value='0')
+                    else:
+                        self.window['-BOX-'].update(value=self.values['-BOX-'] + '0')
 
-            if event in ('-FIVE-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='5')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-'] + '5')
+                #DEFINIÇÕES DE APAGAR ÚLTIMO DIGITO E LIMPAR TUDO
+                if event in ('-CLEAR-'):
+                    self.result = 0
+                    self.window['-BOX-'].update(value= self.result)
 
-            if event in ('-SIX-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='6')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-'] + '6')
+                if event in ('-BACKARROW-'):
+                    self.window['-BOX-'].update(value=self.values['-BOX-'][:-1])
 
-            if event in ('-SEVEN-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='7')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-'] + '7')
+                #FUNÇÕES +, -, *, /
+                if event in ('-PLUS-'):
+                    if self.oper != '':
+                        self.result = self.resulter()
+                    else:
+                        self.oper = '+'
+                        self.result = self.values['-BOX-']
+                    self.window['-BOX-'].update(value = '')
 
-            if event in ('-EIGHT-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='8')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-'] + '8')
+                if event in ('-MINUS-'):
+                    if self.oper != '':
+                        self.result = self.resulter()
+                    else:
+                        self.oper = '-'
+                        self.result = self.values['-BOX-']
+                    self.window['-BOX-'].update(value = '')
 
-            if event in ('-NINE-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='9')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-'] + '9')
-            
-            if event in ('-ZERO-'):
-                if self.values['-BOX-'] == '0':
-                    self.window['-BOX-'].update(value='0')
-                else:
-                    self.window['-BOX-'].update(value=self.values['-BOX-'] + '0')
+                if event in ('-TIMES-'):
+                    if self.oper != '':
+                        self.result = self.resulter()
+                    else:
+                        self.oper = '*'
+                        self.result = self.values['-BOX-']
+                    self.window['-BOX-'].update(value = '')
 
-            #DEFINIÇÕES DE APAGAR ÚLTIMO DIGITO E LIMPAR TUDO
-            if event in ('-CLEAR-'):
-                self.result = 0
-                self.window['-BOX-'].update(value= self.result)
+                if event in ('-DIVIDED-'):
+                    if self.oper != '':
+                        self.result = self.resulter()
+                    else:
+                        self.oper = '/'
+                        self.result = self.values['-BOX-']
+                    self.window['-BOX-'].update(value = '')
 
-            if event in ('-BACKARROW-'):
-                self.window['-BOX-'].update(value=self.values['-BOX-'][:-1])
-
-            #FUNÇÕES +, -, *, /
-            if event in ('-PLUS-'):
-                if self.oper != '':
+                if event in('-RESULT-'):
                     self.result = self.resulter()
-                else:
-                    self.oper = '+'
-                    self.result = self.values['-BOX-']
-                self.window['-BOX-'].update(value = '')
-
-            if event in ('-MINUS-'):
-                if self.oper != '':
-                    self.result = self.resulter()
-                else:
-                    self.oper = '-'
-                    self.result = self.values['-BOX-']
-                self.window['-BOX-'].update(value = '')
-
-            if event in ('-TIMES-'):
-                if self.oper != '':
-                    self.result = self.resulter()
-                else:
-                    self.oper = '*'
-                    self.result = self.values['-BOX-']
-                self.window['-BOX-'].update(value = '')
-
-            if event in ('-DIVIDED-'):
-                if self.oper != '':
-                    self.result = self.resulter()
-                else:
-                    self.oper = '/'
-                    self.result = self.values['-BOX-']
-                self.window['-BOX-'].update(value = '')
-
-            if event in('-RESULT-'):
-                self.result = self.resulter()
-                self.window['-BOX-'].update(value= self.result)
-                self.result = 0
-                self.oper = ''
+                    self.window['-BOX-'].update(value= self.result)
+                    self.result = 0
+                    self.oper = ''
+            except ValueError:
+                sg.popup("Digite valores válidos")
 
 Sapp = App()
 Sapp.start()
