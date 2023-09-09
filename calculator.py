@@ -50,7 +50,7 @@ class App():
                 button.expand(expand_x = True, expand_y = True)
 
     #FUNÇÕES DO MENU_LAYOUT
-    def about(self):
+    def sobre(self):
         sg.popup('Calculator made using Python with PySimpleGui(https://pysimplegui.readthedocs.io/en/latest/)')
 
     #FUNÇÃO QUE MOSTRA O RESULTADO NO VISOR
@@ -70,11 +70,11 @@ class App():
             try:
                 event, self.values = self.window.read()
 
-                if event in (None, 'Exit', sg.WIN_CLOSED):
+                if event in (None, 'Sair', sg.WIN_CLOSED):
                     break
 
-                if event in ('About'):
-                    self.about()
+                if event in ('Sobre'):
+                    self.sobre()
                 #ATUALIZAR VISOR DE ACORDO COM O NÚMERO DIGITADO
                 if event in ('-ONE-'):
                     if self.values['-BOX-'] == '0':
